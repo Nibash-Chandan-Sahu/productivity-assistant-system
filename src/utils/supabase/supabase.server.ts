@@ -10,7 +10,7 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
         async getAll() {
           return (await cookieStore).getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: { name: string; value: string; options?: any }[]) {
           try {
             cookiesToSet.forEach(async ({ name, value, options }) =>
               (await cookieStore).set(name, value, options)
